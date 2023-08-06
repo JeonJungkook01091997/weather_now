@@ -71,7 +71,7 @@ app.post("/", function (req, res) {
 });
 
 app.listen(9700, function () {
-  console.log("server is running on port 7700");
+  console.log("server is running on port 9700");
 });
 
 
