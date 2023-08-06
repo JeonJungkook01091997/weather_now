@@ -8,18 +8,75 @@
   <title>WEATHER</title>
   <link rel="stylesheet" href="/style.css">
 </head>
-<body>
-  <div class="input-container">
-    <form action="/" method="post">
-      <label for="city">CITY LABEL:</label>
-      <input id="city" type="text" name="cityname">
-      <button type="submit">GO</button>
-    </form>
-  </div>
 
-  <!-- Result container will be populated by JavaScript -->
-  <div class="result-container" id="result-container" style="display: none;"></div>
 
-  <script src="/weather.js"></script>
+  <body>
+    <div class="container">
+      <form action="/" method="post">
+        <label for="city">CITY LABEL:</label>
+        <input id="city" type="text" name="cityname">
+        <button type="submit">GO</button>
+      </form>
+      <button onclick="getUserLocation()">Get Weather for My Location</button>
+    </div>
+  
+    <div class="result-container" id="result-container">
+      <!-- Weather data will be displayed here -->
+    </div>
+  
+    <!-- JavaScript to get user's location and send it to the server -->
+    <script>
+      // Function to get user's location
+      function getUserLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showWeatherForLocation, showError);
+        } else {
+          console.log("Geolocation is not supported by this browser.");
+        }
+      }
+  
+      // Function to show the user's weather for the retrieved location
+      function showWeatherForLocation(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const url = `/weather/${latitude}/${longitude}`;
+        fetchWeatherData(url);
+      }
+  
+      // Function to handle errors when getting user's location
+      function showError(error) {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            console.log("User denied the request for Geolocation.");
+            break;
+          case error.POSITION_UNAVAILABLE:
+            console.log("Location information is unavailable.");
+            break;
+          case error.TIMEOUT:
+            console.log("The request to get user location timed out.");
+            break;
+          case error.UNKNOWN_ERROR:
+            console.log("An unknown error occurred.");
+            break;
+        }
+      }
+  
+      // Function to fetch weather data from the server
+      function fetchWeatherData(url) {
+        fetch(url)
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("result-container").innerHTML = data;
+          })
+          .catch(error => {
+            console.error("Error fetching weather data:", error);
+          });
+      }
+  
+      // Call the function to get user's location when the page loads
+      getUserLocation();
+    </script>
+  
+  
 </body>
 </html>

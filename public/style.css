@@ -3,8 +3,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
+    margin: 0; 
+    background-image:url("/cloudy.jpg"); 
   }
   
   form {
@@ -12,9 +12,9 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #57879c;
     border-radius: 5px;
-    background-color: #ffffff;
+    background-color: #7aa5d7;
   }
   
   label {
@@ -26,7 +26,7 @@ body {
     width: 300px;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #a7f304;
     border-radius: 5px;
   }
   
@@ -45,4 +45,45 @@ body {
   button:hover {
     background-color: #0056b3;
   }
+ 
+  
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+ 
+  
+  
+  
+  .result-container {   
+
+     color:cornsilk;
+    margin: 20px;  border-radius: 10px; 
+    background-color:navy  ; padding:10px;
+   display:row; flex-wrap:wrap; justify-content:center; ;
+  }
+  
+  /* Style for the input form */
+ 
+    /* Your existing input form styles here */
+  
+  /* Style for the result container */
+  .result-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .result-container h1 {
+    font-size: 36px;
+  }
+  
+  .result-container p {
+    font-size: 18px;
+  }
+  
+ 
+  
   
