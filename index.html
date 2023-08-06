@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +9,17 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <form action='/' method="post">
-    <label for="city">CITY LABEL:</label>
-    <input id="city" type="text" name="cityname">
-    <button type="submit">GO</button>
-  </form>
+  <div class="input-container">
+    <form action="/" method="post">
+      <label for="city">CITY LABEL:</label>
+      <input id="city" type="text" name="cityname">
+      <button type="submit">GO</button>
+    </form>
+  </div>
+
+  <!-- Result container will be populated by JavaScript -->
+  <div class="result-container" id="result-container" style="display: none;"></div>
+
+  <script src="/weather.js"></script>
 </body>
 </html>
