@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Weather Result</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="result-container" id="result-container">
+    <!-- Weather data will be displayed here -->
+  </div>
+  
+  <!-- JavaScript to fetch and display weather results -->
+  <script>
+    // Function to fetch weather data based on the city name
+    function fetchWeatherForCity(city) {
+      const url = `/weather/${encodeURIComponent(city)}`;
+      fetchWeatherData(url);
+    }
+
+    // Get the city name from the query parameter
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const city = urlParams.get('city');
+    if (city) {
+      fetchWeatherForCity(city);
+    }
+  </script>
+</body>
+</html>
